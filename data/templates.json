@@ -4,10 +4,13 @@
     {
       "id": 0,
       "name": "default",
+      "scale_type": "square",
+      "scale": [1080, 1080],
       "bg_color": "#FFFFFF",
       "bg_image": null,
       "font_color": "#000000",
       "font_size": 42,
+      "font_path": null,
       "alignment": "center",
       "margin": 50
     }
