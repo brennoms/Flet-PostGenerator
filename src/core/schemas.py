@@ -37,3 +37,9 @@ class TemplateSchema(BaseModel):
         if self.scale_type == PostScale.CUSTOM:
             return self.scale
         return SCALE_MAP.get(self.scale_type, [1080, 1080])
+
+class AppConfig(BaseModel):
+    working_directory: Optional[str] = None
+    last_used_template_id: Union[int, str] = 0
+    theme_mode: str = "dark"  # dark, light, system
+    auto_open_folder: bool = True
