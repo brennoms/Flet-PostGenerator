@@ -7,6 +7,10 @@ class ConfigManager:
         self.config_dir = "data"
         self.config_path = os.path.join(self.config_dir, "config.json")
 
+    @property
+    def configs(self):
+        return self.load()
+
     def ensure_config_exists(self):
         """Checks if the config file exists; if not, creates it with defaults."""
         if not os.path.exists(self.config_dir):

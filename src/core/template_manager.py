@@ -7,6 +7,10 @@ class TemplateManager:
         self.storage_path = storage_path
         self._ensure_storage_exists()
 
+    @property
+    def templates(self):
+        return self.load_all()
+
     def _ensure_storage_exists(self):
         os.makedirs(os.path.dirname(self.storage_path), exist_ok=True)
         if not os.path.exists(self.storage_path):
