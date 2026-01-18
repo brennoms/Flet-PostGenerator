@@ -38,6 +38,10 @@ class TemplateSchema(BaseModel):
             return self.scale
         return SCALE_MAP.get(self.scale_type, [1080, 1080])
 
+class TemplateFileSchema(BaseModel):
+    next_id: int = 1
+    templates: List[TemplateSchema] = []
+
 class AppConfig(BaseModel):
     working_directory: Optional[str] = None
     last_used_template_id: Union[int, str] = 0
