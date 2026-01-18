@@ -1,6 +1,7 @@
 import os
 import re
 from PIL import Image
+from src.core.config_manager import ConfigManager
 
 class PostSaver:
     """
@@ -43,3 +44,18 @@ class PostSaver:
                 img.save(img_path, "PNG")
             
             return folder_path
+
+class DirectoryNotFoundError(Exception):
+    pass
+
+def save_post_in_default_directory(images: list[Image.Image], post_name: str) -> str:
+    config_manager = ConfigManager()
+    config = config_manager.load()
+
+    if not config.working_directory:
+        raise DirectoryNotFoundError("No working directory defined in settings.")
+
+    if not os.path.exists(config.working_directory):
+        raise DirectoryNotFoundError(f"The directory '{config.working_directory}' does not exist.")
+
+    return PostSaver.save_post(images, config.working_directory, post_name)
